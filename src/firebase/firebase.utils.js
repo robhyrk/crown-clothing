@@ -13,15 +13,16 @@ const firebaseConfig = {
     measurementId: "G-7MFRR0GCVK"
   };
 
-export const createUserProfileDocument = async (userAuth, ...additionalData) => {
+export const createUserProfileDocument = async (userAuth, additionalData) => {
   if(!userAuth) return;
   const userRef = firestore.doc(`users/${userAuth.uid}`)
   
   const snapShot = await userRef.get()
-  console.log(snapShot)
+  console.log(additionalData)
   if(!snapShot.exists) {
     const {displayName, email } = userAuth
     const createdAt = new Date()
+    console.log(displayName, email, createdAt,  additionalData)
     try {
       await userRef.set({
         displayName,
