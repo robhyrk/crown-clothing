@@ -7,8 +7,8 @@ import './sign-page.style.scss'
 
 const SignPage = () => (
     <div className="sign-in-and-sign-up">
-        <SignUp />
         <SignIn />
+        <SignUp />
     </div>
 )
 
