@@ -2,7 +2,7 @@ import {useState} from 'react'
 import FormInput from '../form-input/form-input.component'
 import Button, {BUTTON_TYPES_CLASSES} from '../button/button.component'
 import './sign-in-form.styles.scss'
-import { signInWithGooglePopup, createUserDocumentFromAuth, signInUserWithEmailAndPassword, onAuthStateChangedListener } from '../../utils/firebase/firebase.utils'
+import { signInWithGooglePopup, signInUserWithEmailAndPassword} from '../../utils/firebase/firebase.utils'
 
 const defaultFormFields = {
     email: '',
@@ -22,7 +22,8 @@ const SignInform = () => {
         event.preventDefault()
 
         try {
-            const {user} = await signInUserWithEmailAndPassword (email, password)
+            const {user} = await signInUserWithEmailAndPassword(email, password)
+            console.log(user)
             resetFormFields()
         } catch(err) {
             switch(err.code) {
@@ -57,7 +58,7 @@ const SignInform = () => {
                 
                 <FormInput label="Password"  type="password" required name="password" onChange={handleChange} value={password}/>
                 <div className='buttons-container'>
-                    <Button type="submit">Sign In</Button>
+                    <Button onClick={(event)=>handleSubmit(event)} type="submit">Sign In</Button>
                     <Button buttonType={BUTTON_TYPES_CLASSES.google} onClick={signInWithGoogle} type="submit">Google Sign In</Button>
                 </div>        
             </form>
