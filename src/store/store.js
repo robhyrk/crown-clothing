@@ -27,7 +27,7 @@ const composedEnhancer = (process.env.NODE_ENV !== 'production' && window && win
 
 const composedEnhancers = composedEnhancer(applyMiddleware(...middleWares))
 
-//for redux persist for saving in local storage
+//for redux persist for saving in local storage [adjust in index.js as well] 
 // export const store = createStore(persistedReducer, undefined, composedEnhancers)
 
 export const store = createStore(rootReducer, undefined, composedEnhancers)
