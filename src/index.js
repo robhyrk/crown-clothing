@@ -9,7 +9,6 @@ import {store, persistor} from './store/store'
 import reportWebVitals from './reportWebVitals';
 
 import './index.scss';
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
